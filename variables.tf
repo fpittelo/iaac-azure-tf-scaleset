@@ -15,3 +15,24 @@ variable "rg_location" {
   type             = string
   description      = "Azure Resource Group location for all items"
 }
+
+# Variable defining vnet name
+variable "vnet_name" {
+  default          = "vnet"
+  type             = string
+  description      = "Variable defining vnet name"
+}
+
+# Variable defining internal subnet name
+variable "subnetint_name" {
+  default          = "subnet-int"
+  type             = string
+  description      = "Variable defining vnet name"
+}
+
+# Variable defining the test scale set name
+variable "vm_scaleset_test" {
+  default          = "vm-scaleset-test"
+  type             = string
+  description      = "Variable defining the test scale set"
+}
