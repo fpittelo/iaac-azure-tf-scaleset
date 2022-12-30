@@ -1,0 +1,12 @@
+#
+# git ignore file
+#
+
+*.exe
+*.hcl
+*.*.hcl
+*.info
+*.tfplan
+*.tfstate
+*.backup
+*.*.backup
