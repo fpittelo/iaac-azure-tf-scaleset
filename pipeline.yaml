@@ -1,8 +1,8 @@
 ###  Test Pipeline
 
  trigger:
- - feature
-
+ - none
+ 
  pool:
    vmImage: 'ubuntu-latest'
 
