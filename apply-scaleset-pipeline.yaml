@@ -69,3 +69,14 @@ stages:
               provider: 'azurerm'
               command: 'apply'
               environmentServiceNameAzureRM: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
+
+  - stage: verification
+    jobs:
+      - job:
+        steps:
+          - task: ManualValidation@0
+            displayName: validation
+            inputs:
+              notifyUsers: 'frederic.pitteloud@gmail.com'
+              instructions: 'validate or pipeline will resume'
+              onTimeout: 'resume'
