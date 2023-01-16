@@ -16,7 +16,8 @@
     inputs:
       connection: 'github.com_fpittelo'
       userRepository: 'fpittelo/iaac-azure-tf-scaleset'
-      defaultVersionType: 'latest'
+      defaultVersionType: 'specificVersion'
+      version: '89111180'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   - task: TerraformTaskV3@3
