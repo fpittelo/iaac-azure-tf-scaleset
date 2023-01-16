@@ -44,3 +44,11 @@
       workingDirectory: 'iaac-azure-tf-scaleset'
       commandOptions: '-out=main.tfplan'
       environmentServiceNameAzureRM: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
+
+  - task: TerraformTaskV3@3
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      commandOptions: 'main.tfplan'
+      workingDirectory: 'iaac-azure-tf-scaleset'
+      environmentServiceNameAzureRM: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
