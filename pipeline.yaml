@@ -42,4 +42,5 @@
       provider: 'azurerm'
       command: 'plan'
       workingDirectory: 'iaac-azure-tf-scaleset'
+      commandOptions: '-out=main.tfplan'
       environmentServiceNameAzureRM: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
