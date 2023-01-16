@@ -17,9 +17,8 @@
       targetType: 'inline'
       script: |
         #!/bin/bash
-        mkdir code
-        cd ~./code
         git clone --branch feature https://github.com/fpittelo/iaac-azure-tf-scaleset
+        exit
 
   - task: TerraformTaskV3@3
     inputs:
