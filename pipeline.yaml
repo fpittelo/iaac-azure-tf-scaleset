@@ -1,32 +1,44 @@
 ###  Test Pipeline
 
-- task: DownloadGitHubRelease@0
-  inputs:
-    connection: 'github.com_fpittelo'
-    userRepository: 'fpittelo/iaac-azure-tf-scaleset'
-    defaultVersionType: 'latest'
-    downloadPath: '$(System.ArtifactsDirectory)'
+ trigger:
+ - feature
 
-- task: TerraformTaskV3@3
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    workingDirectory: '$(System.ArtifactsDirectory)'
-    backendServiceArm: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
-    backendAzureRmResourceGroupName: 'FRED'
-    backendAzureRmStorageAccountName: 'iaaclabs'
-    backendAzureRmContainerName: 'iaacazuretfscaleset'
-    backendAzureRmKey: 'terraform.tfstate'
+ pool:
+   vmImage: 'ubuntu-latest'
 
-- task: TerraformTaskV3@3
-  inputs:
-    provider: 'azurerm'
-    command: 'validate'
-    workingDirectory: '$(System.ArtifactsDirectory)'
+ steps:
 
-- task: TerraformTaskV3@3
-  inputs:
-    provider: 'azurerm'
-    command: 'plan'
-    workingDirectory: '$(System.ArtifactsDirectory)'
-    environmentServiceNameAzureRM: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
+  - task: TerraformInstaller@0
+    inputs:
+      terraformVersion: 'latest'
+
+  - task: DownloadGitHubRelease@0
+    inputs:
+      connection: 'github.com_fpittelo'
+      userRepository: 'fpittelo/iaac-azure-tf-scaleset'
+      defaultVersionType: 'latest'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  - task: TerraformTaskV3@3
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.ArtifactsDirectory)'
+      backendServiceArm: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
+      backendAzureRmResourceGroupName: 'FRED'
+      backendAzureRmStorageAccountName: 'iaaclabs'
+      backendAzureRmContainerName: 'iaacazuretfscaleset'
+      backendAzureRmKey: 'terraform.tfstate'
+
+  - task: TerraformTaskV3@3
+    inputs:
+      provider: 'azurerm'
+      command: 'validate'
+      workingDirectory: '$(System.ArtifactsDirectory)'
+
+  - task: TerraformTaskV3@3
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      workingDirectory: '$(System.ArtifactsDirectory)'
+      environmentServiceNameAzureRM: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
