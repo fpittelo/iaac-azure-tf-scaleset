@@ -12,11 +12,20 @@
     inputs:
       terraformVersion: 'latest'
 
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: |
+        #!/bin/bash
+        mkdir code
+        cd ~./code
+        git clone --branch feature https://github.com/fpittelo/iaac-azure-tf-scaleset
+
   - task: TerraformTaskV3@3
     inputs:
       provider: 'azurerm'
       command: 'init'
-      workingDirectory: '$(System.ArtifactsDirectory)'
+      workingDirectory: '$(HOME)/code'
       backendServiceArm: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
       backendAzureRmResourceGroupName: 'FRED'
       backendAzureRmStorageAccountName: 'iaaclabs'
@@ -27,11 +36,11 @@
     inputs:
       provider: 'azurerm'
       command: 'validate'
-      workingDirectory: '$(System.ArtifactsDirectory)'
+      workingDirectory: '$(HOME)/code'
 
   - task: TerraformTaskV3@3
     inputs:
       provider: 'azurerm'
       command: 'plan'
-      workingDirectory: '$(System.ArtifactsDirectory)'
+      workingDirectory: '$(HOME)/code'
       environmentServiceNameAzureRM: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
