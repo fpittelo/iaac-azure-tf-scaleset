@@ -10,7 +10,7 @@ resources:
     ref: refs/heads/feature
 
 jobs:
-  - job: run-configuration
+  - job: configuration
     displayName: 'job run configuration'
     pool:
       vmImage: 'ubuntu-latest'
