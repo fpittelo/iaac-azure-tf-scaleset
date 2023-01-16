@@ -24,7 +24,7 @@
     inputs:
       provider: 'azurerm'
       command: 'init'
-      workingDirectory: '$(HOME)/code'
+      workingDirectory: 'iaac-azure-tf-scaleset'
       backendServiceArm: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
       backendAzureRmResourceGroupName: 'FRED'
       backendAzureRmStorageAccountName: 'iaaclabs'
@@ -35,11 +35,11 @@
     inputs:
       provider: 'azurerm'
       command: 'validate'
-      workingDirectory: '$(HOME)/code'
+      workingDirectory: 'iaac-azure-tf-scaleset'
 
   - task: TerraformTaskV3@3
     inputs:
       provider: 'azurerm'
       command: 'plan'
-      workingDirectory: '$(HOME)/code'
+      workingDirectory: 'iaac-azure-tf-scaleset'
       environmentServiceNameAzureRM: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
