@@ -1,9 +1,5 @@
 ###  Test Pipeline
 
-- task: TerraformInstaller@0
-  inputs:
-    terraformVersion: 'latest'
-
 - task: DownloadGitHubRelease@0
   inputs:
     connection: 'github.com_fpittelo'
