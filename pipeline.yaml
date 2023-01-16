@@ -11,7 +11,7 @@ resources:
 
 jobs:
   - job: run-configuration
-    displayName: run tf configuration
+    displayName: 'job run configuration'
     pool:
       vmImage: 'ubuntu-latest'
 
@@ -21,6 +21,7 @@ jobs:
       fetchTags: 
 
     - task: TerraformInstaller@0
+      displayName: 'terraform install'
       inputs:
         terraformVersion: 'latest'
 
@@ -33,6 +34,7 @@ jobs:
           exit
 
     - task: TerraformTaskV3@3
+      displayName: 'terraform init'
       inputs:
         provider: 'azurerm'
         command: 'init'
@@ -44,12 +46,14 @@ jobs:
         backendAzureRmKey: 'terraform.tfstate'
 
     - task: TerraformTaskV3@3
+      displayName: 'Terraform validate'
       inputs:
         provider: 'azurerm'
         command: 'validate'
         workingDirectory: 'iaac-azure-tf-scaleset'
 
     - task: TerraformTaskV3@3
+      displayName: 'Terraform Plan'
       inputs:
         provider: 'azurerm'
         command: 'plan'
