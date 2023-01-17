@@ -6,7 +6,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  rg_group: 'azure-tf-scaleset'
+  rg_group: 'iaac-azure-tf-scaleset'
   sa_name: 'iaaclabs'
   cont_name: 'iaacazuretfscaleset'
   storage_key: 'terraform.tfstate'
