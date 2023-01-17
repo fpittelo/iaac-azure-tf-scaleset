@@ -59,3 +59,21 @@ variable "vm_scaleset_test" {
   type             = string
   description      = "Variable defining the test scale set"
 }
+
+# Variable for department
+variable "vm_dpt_it" {
+  type    = string
+  default = "IT"
+}
+
+# Variable for test environment
+variable "vm_env_test" {
+  type    = string
+  default = "Test"
+}
+
+# Variable for owner
+variable "vm_owner" {
+  type    = string
+  default = "Fred"
+}
