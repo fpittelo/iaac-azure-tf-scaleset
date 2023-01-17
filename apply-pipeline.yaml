@@ -6,9 +6,9 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  rg_group: 'iaac-azure-tf-vm'
+  rg_group: 'iaac-azure-tf-scaleset'
   sa_name: 'iaaclabs'
-  cont_name: 'iaacazuretfvm'
+  cont_name: 'iaacazuretfscaleset'
   storage_key: 'terraform.tfstate'
 
 stages:
@@ -29,7 +29,7 @@ stages:
             backendServiceArm: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
             backendAzureRmResourceGroupName: 'FRED'
             backendAzureRmStorageAccountName: 'iaaclabs'
-            backendAzureRmContainerName: 'iaacazuretfvm'
+            backendAzureRmContainerName: 'iaacazuretfscaleset'
             backendAzureRmKey: 'terraform.tfstate'
         - task: TerraformTaskV3@3
           displayName: validate
@@ -54,7 +54,7 @@ stages:
               backendServiceArm: 'Pay-As-You-Go(a6f24a81-7804-44a9-b074-25a9781afd24)'
               backendAzureRmResourceGroupName: 'FRED'
               backendAzureRmStorageAccountName: 'iaaclabs'
-              backendAzureRmContainerName: 'iaacazuretfvm'
+              backendAzureRmContainerName: 'iaacazuretfscaleset'
               backendAzureRmKey: 'terraform.tfstate'
           - task: TerraformTaskV3@3
             displayName: deptfplan
